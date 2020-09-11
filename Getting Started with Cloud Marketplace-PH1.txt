@@ -1,0 +1,12 @@
+gcloud config set project qwiklabs-gcp-04-c6e0b49f1e4f
+gcloud config set compute/zone us-central1-a
+gcloud compute instances create lamp
+gcloud compute firewall-rules create trafic --description "Incoming http and https allow" --allow tcp:80,tcp:443
+gcloud compute ssh lamp
+sudo apt update
+sudo apt-get install apache2 php libapache2-mod-php
+sudo apt-get install mysql-server php7.0-mysql php-pear
+sudo mysql_secure_installation
+sudo apt-get install phpmyadmin
+sudo service httpd restart
+
